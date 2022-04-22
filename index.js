@@ -42,4 +42,14 @@ app.get('/is-today-holiday', (request, response) => {
             response.send('hoje não é feriado')
         }
     })
+});
+
+app.get('/holidays/:idDoMes', (request, response) => {
+    const id = request.params.idDoMes;
+    const novaLista = holidays.filter(element => {
+        if(element.date.split('/')[0] === id){
+          return element;  
+        }
+    })
+    response.send(novaLista);
 })
